@@ -7,6 +7,7 @@
      * which will construct the search index and also add the search widget to the DOM.
      */
     function loadIndex(config) {
+        disable_button_state(config.element);
 
         var http = new XMLHttpRequest();
         http.onreadystatechange = function () {
@@ -128,6 +129,7 @@
         // For performance reasons, don't try and search with less than three characters. There is a noticibly longer
         // search time when searching for 1 or 2 string terms.
         if (terms == null || terms.length < minChars) {
+            disable_button_state(element);
             return;
         }
 
@@ -143,7 +145,7 @@
           next_start_index = results.length
         }
 
-        manage_button_visibility(element, results.length, this_start_index, next_start_index)
+        manage_button_state(element, results.length, this_start_index, next_start_index)
         results = results.slice(this_start_index, next_start_index)
         window.FDroid.Search.page_number = page_number
 
@@ -152,7 +154,7 @@
         });
     }
 
-    function manage_button_visibility(element, results_length, this_start_index, next_start_index) {
+    function manage_button_state(element, results_length, this_start_index, next_start_index) {
       var prev_page = element.querySelector('#prev-page')
       var next_page = element.querySelector('#next-page')
 
@@ -169,6 +171,10 @@
       else {
         next_page.classList.remove('disabled')
       }
+    }
+
+    function disable_button_state(element) {
+      manage_button_state(element, 0, 0, 0)
     }
 
     window.FDroid = window.FDroid || {};
