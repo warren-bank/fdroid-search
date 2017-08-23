@@ -82,6 +82,7 @@
         // pre-populate the search input field from the URL #hash:
         if (window.location.hash && (window.location.hash.length > (1 + config.minChars))) {
           autocomplete.input.value = decodeURIComponent(window.location.hash).substr(1);
+          history.replaceState(undefined, undefined, window.location.href.replace(/#.*$/, ''));
           display_search_results(1);
         }
 
