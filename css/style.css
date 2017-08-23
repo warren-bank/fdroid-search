@@ -61,7 +61,11 @@ body {
   border-bottom-style: none;
 }
 #search-input > div.awesomplete > ul > li > div.search-result > img.package-icon {
-  display: none;
+  display: block;
+  width: 48px;
+  height: 48px;
+  float: left;
+  margin-right: 2em;
 }
 #search-input > div.awesomplete > ul > li > div.search-result > div.package-info > h4 {
   font-size: 1.0em;
