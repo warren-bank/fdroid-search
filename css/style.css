@@ -39,7 +39,7 @@ body {
 }
 #search-input > #search-pagination > #prev-page.disabled,
 #search-input > #search-pagination > #next-page.disabled {
-  opacity: 0.5;
+  opacity: 0.15;
   cursor: not-allowed;
 }
 
