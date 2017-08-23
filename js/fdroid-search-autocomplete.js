@@ -63,7 +63,7 @@
               autocomplete.input.focus()
             }
 
-            performSearch(autocomplete, index, packages, autocomplete.input.value, config.results_per_page, page_number, config.element);
+            performSearch(autocomplete, index, packages, autocomplete.input.value, config.minChars, config.results_per_page, page_number, config.element);
         }
 
         autocomplete.input.oninput = function() {
@@ -95,6 +95,7 @@
         config.element.appendChild(searchInput);
 
         var autocomplete = new Awesomplete(searchInput, {
+            minChars: config.minChars,
             maxItems: config.results_per_page,
             filter: function() { return true; }, // Don't filter, this is done by lunr.js already.
             item: function(item) {
@@ -123,10 +124,10 @@
      * @param {Object[]} packages
      * @param {string} terms
      */
-    function performSearch(autocomplete, index, packages, terms, results_per_page, page_number, element) {
+    function performSearch(autocomplete, index, packages, terms, minChars, results_per_page, page_number, element) {
         // For performance reasons, don't try and search with less than three characters. There is a noticibly longer
         // search time when searching for 1 or 2 string terms.
-        if (terms == null || terms.length < 3) {
+        if (terms == null || terms.length < minChars) {
             return;
         }
 
