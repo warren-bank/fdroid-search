@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>search utility for f-droid.org</title>
+
+  <script src="https://f-droid.org/js/lunr.js"></script>
+  <script src="https://f-droid.org/js/mustache.min.js"></script>
+
+<!--
+  // This script is crazy old. Need a more recent version to unbind the "blur" event:
+  <script src="https://f-droid.org/js/awesomplete.min.js"></script>
+
+  // This script needs to be modified: 
+  <script src="https://f-droid.org/js/fdroid-search-autocomplete.js"></script>
+-->
+
+  <script src="https://leaverou.github.io/awesomplete/awesomplete.js"></script>
+  <script src="js/fdroid-search-autocomplete.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://f-droid.org/js/awesomplete.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+
+  <script id="search-result-template" type="x-tmpl-mustache">
+    <div class="package-header search-result">
+      <img class="package-icon" src="{{ icon_url }}">
+
+      <div class="package-info">
+        <h4 class="package-name">
+          {{ name }}
+        </h4>
+
+        <div class="package-desc">
+          <span class="package-summary">{{ summary }}</span>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <div id="search-input">
+    <div id="search-pagination">
+      <div id="prev-page">&lt;</div>
+      <div id="next-page">&gt;</div>
+    </div>
+  </div>
+
+  <script>
+    FDroid.Search.addAutocomplete({
+      element:          document.getElementById('search-input'),
+      templateElement:  document.getElementById('search-result-template'),
+      baseurl:          'https://f-droid.org',
+      fdroidRepo:       'https://f-droid.org/repo',
+      results_per_page: 8
+    })
+  </script>
+</body>
+</html>
