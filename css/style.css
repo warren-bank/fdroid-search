@@ -2,17 +2,20 @@ body {
   color: #212121;
   font: 400 16px/1.5 Roboto,Arial,sans-serif;
   word-wrap: break-word;
+  background-color: #5B9DD9; /* same as: -webkit-focus-ring-color */
 }
 
 #search-input {
   position: relative;
+  background-color: #ffffff;
+  padding: 0.15em;
 }
 #search-input > #search-pagination {
   font-size: 1.1em;
   height: 2.2em;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0.3em;
+  right: 0.3em;
 }
 #search-input > #search-pagination > #prev-page,
 #search-input > #search-pagination > #next-page {
@@ -20,8 +23,8 @@ body {
   z-index: 1;
   width: 1.1em;
   height: 1.1em;
-  top: 0.55em;
-  bottom: 0.55em;
+  top: 0.4em;
+  bottom: 0.4em;
 
   background-color: #eee;
   cursor: pointer;
@@ -32,10 +35,10 @@ body {
   border: 1px solid #212121;
 }
 #search-input > #search-pagination > #prev-page {
-  right: 1.65em;
+  right: 1.5em;
 }
 #search-input > #search-pagination > #next-page {
-  right: 0.35em;
+  right: 0.2em;
 }
 #search-input > #search-pagination > #prev-page.disabled,
 #search-input > #search-pagination > #next-page.disabled {
@@ -52,6 +55,10 @@ body {
   font-size: 1.1em;
   padding: 0.4em;
   width: 100%;
+}
+#search-input > div.awesomplete > input:focus {
+  outline-style: none;
+  border-color: #5B9DD9; /* same as: -webkit-focus-ring-color */
 }
 
 #search-input > div.awesomplete > ul > li {
