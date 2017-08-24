@@ -2,7 +2,7 @@
 
 #### Hosted:
 
-[fdroid-search.html](http://warren-bank.github.io/fdroid-search/fdroid-search.html)
+["fdroid-search" @ GitHub Pages](http://warren-bank.github.io/fdroid-search/index.html)
 
 #### Background:
 
@@ -16,7 +16,7 @@
 
 * using the same Lunr index and search widget,<br>add pagination to display all search results
 * pre-populate the search input field from the URL _#hash_
-  * [example: "alarm clock"](https://warren-bank.github.io/fdroid-search/fdroid-search.html#alarm%20clock)
+  * [example: "alarm clock"](https://warren-bank.github.io/fdroid-search/#alarm%20clock)
 
 #### Caveat:
 
