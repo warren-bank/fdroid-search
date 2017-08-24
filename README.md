@@ -15,6 +15,8 @@
 #### Description:
 
 * using the same Lunr index and search widget,<br>add pagination to display all search results
+* pre-populate the search input field from the URL _#hash_
+  * [example: "alarm clock"](https://warren-bank.github.io/fdroid-search/fdroid-search.html#alarm%20clock)
 
 #### Caveat:
 

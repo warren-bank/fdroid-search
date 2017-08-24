@@ -142,25 +142,28 @@
             return;
         }
 
-        let results = index.search(terms + "*")
-        let pages   = Math.ceil(results.length / results_per_page)
+        var results, pages, this_start_index, next_start_index
+
+        results = index.search(terms + "*")
+        pages   = Math.ceil(results.length / results_per_page)
 
         if (page_number > pages) return
         if (page_number < 1) return
 
-        let this_start_index = (results_per_page)*(page_number - 1)
-        let next_start_index = (results_per_page)*(page_number)
+        this_start_index = (results_per_page)*(page_number - 1)
+        next_start_index = (results_per_page)*(page_number)
         if (next_start_index > results.length) {
-          next_start_index = results.length
+            next_start_index = results.length
         }
 
-        manage_button_state(element, results.length, this_start_index, next_start_index)
-        results = results.slice(this_start_index, next_start_index)
         window.FDroid.Search.page_number = page_number
+        manage_button_state(element, results.length, this_start_index, next_start_index)
 
-        autocomplete.list = results.map(function(item) {
-            return packages[item.ref];
-        });
+        results = results.slice(this_start_index, next_start_index)
+        results = results.map(function(item) {
+            return packages[item.ref]
+        })
+        autocomplete.list = results
     }
 
     function manage_button_state(element, results_length, this_start_index, next_start_index) {
