@@ -30,6 +30,8 @@
   * Jekyll page to power [f-droid.org](https://f-droid.org) and its [staging server](https://fdroid.gitlab.io/fdroid-website/)
 * [git repo: "jekyll-fdroid"](https://gitlab.com/fdroid/jekyll-fdroid)
   * Jekyll plugin to work with F-Droid package index metadata
+* [Lunr guides: "searching"](https://lunrjs.com/guides/searching.html)
+  * syntax for writing search term patterns
 
 #### Related User Questions/Comments:
 
