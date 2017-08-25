@@ -157,7 +157,7 @@
         }
 
         window.FDroid.Search.page_number = page_number
-        manage_button_state(element, results.length, this_start_index, next_start_index)
+        manage_button_state(element, results.length, this_start_index, next_start_index, page_number, pages)
 
         results = results.slice(this_start_index, next_start_index)
         results = results.map(function(item) {
@@ -166,9 +166,10 @@
         autocomplete.list = results
     }
 
-    function manage_button_state(element, results_length, this_start_index, next_start_index) {
+    function manage_button_state(element, results_length, this_start_index, next_start_index, page_number, pages) {
       var prev_page = element.querySelector('#prev-page')
       var next_page = element.querySelector('#next-page')
+      var status    = element.querySelector('#search-pagination-status > span')
 
       if (this_start_index === 0) {
         prev_page.classList.add('disabled')
@@ -182,6 +183,13 @@
       }
       else {
         next_page.classList.remove('disabled')
+      }
+
+      if (results_length) {
+        status.textContent = page_number + ' of ' + pages
+      }
+      else {
+        status.textContent = ''
       }
     }
 

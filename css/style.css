@@ -81,3 +81,17 @@ body {
 #search-input > div.awesomplete > ul > li > div.search-result > div.package-info > div.package-desc {
   font-size: 0.85em;
 }
+
+#search-input > #search-pagination > #search-pagination-status {
+  position: absolute;
+  z-index: 1;
+  top: 0.3em;
+  right: 3em;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1.1em;
+}
+#search-input > #search-pagination > #search-pagination-status > span {
+  font-size: 0.75em;
+  font-style: italic;
+}
