@@ -72,11 +72,11 @@
         };
 
         config.element.querySelector('#prev-page').onclick = function() {
-            display_search_results(window.FDroid.Search.page_number - 1);
+            display_search_results(window.FDroid.Search.current_page_number - 1);
         };
 
         config.element.querySelector('#next-page').onclick = function() {
-            display_search_results(window.FDroid.Search.page_number + 1);
+            display_search_results(window.FDroid.Search.current_page_number + 1);
         };
 
         // pre-populate the search input field from the URL #hash:
@@ -146,7 +146,7 @@
         }
 
         // when: the search terms have not changed
-        if (window.FDroid.Search.current_search_terms === terms) return
+        if ((window.FDroid.Search.current_search_terms === terms) && (window.FDroid.Search.current_page_number === page_number)) return
 
         // cache the new search terms
         window.FDroid.Search.current_search_terms = terms
@@ -165,7 +165,7 @@
             next_start_index = results.length
         }
 
-        window.FDroid.Search.page_number = page_number
+        window.FDroid.Search.current_page_number = page_number
         manage_button_state(element, results.length, this_start_index, next_start_index, page_number, pages)
 
         results = results.slice(this_start_index, next_start_index)
