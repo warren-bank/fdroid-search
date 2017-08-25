@@ -142,6 +142,7 @@
             disable_button_state(element)
             autocomplete.list = []
             delete window.FDroid.Search.current_search_terms
+            delete window.FDroid.Search.current_page_number
             return
         }
 
