@@ -140,6 +140,7 @@
         // when: no viable search terms are entered
         if (terms === false) {
             disable_button_state(element)
+            autocomplete.list = []
             delete window.FDroid.Search.current_search_terms
             return
         }
