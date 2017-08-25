@@ -135,12 +135,20 @@
      * @param {string} terms
      */
     function performSearch(autocomplete, index, packages, terms, minChars, results_per_page, page_number, element) {
-        // For performance reasons, don't try and search with less than three characters. There is a noticibly longer
-        // search time when searching for 1 or 2 string terms.
-        if (terms == null || terms.length < minChars) {
-            disable_button_state(element);
-            return;
+        terms = sanitize_search_terms(terms, minChars)
+
+        // when: no viable search terms are entered
+        if (terms === false) {
+            disable_button_state(element)
+            delete window.FDroid.Search.current_search_terms
+            return
         }
+
+        // when: the search terms have not changed
+        if (window.FDroid.Search.current_search_terms === terms) return
+
+        // cache the new search terms
+        window.FDroid.Search.current_search_terms = terms
 
         var results, pages, this_start_index, next_start_index
 
@@ -164,6 +172,25 @@
             return packages[item.ref]
         })
         autocomplete.list = results
+    }
+
+    function sanitize_search_terms(terms, minChars) {
+        // sanity check
+        if (typeof terms !== 'string') {
+            return false
+        }
+
+        // For performance reasons, filter out all search terms that are shorter than a minimum length.
+        // Such terms produce a large number of results, which have no real relevance.
+        terms = terms.split(' ').filter(function(term) {
+            return (term.length >= minChars)
+        })
+        if (terms.length === 0) {
+            return false
+        }
+        else {
+            return terms.join(' ')
+        }
     }
 
     function manage_button_state(element, results_length, this_start_index, next_start_index, page_number, pages) {
